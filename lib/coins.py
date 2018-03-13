@@ -778,8 +778,8 @@ class Axe(Coin):
         import x11_hash
         return x11_hash.getPoWHash(header)
 
-class AxeTestnet(Axe):
-    SHORTNAME = "tAXE"
+class DashTestnet(Dash):
+    SHORTNAME = "tDASH"
     NET = "testnet"
     XPUB_VERBYTES = bytes.fromhex("3a805837")
     XPRV_VERBYTES = bytes.fromhex("3a8061a0")
