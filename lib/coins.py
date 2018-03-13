@@ -716,6 +716,39 @@ class DogecoinTestnet(Dogecoin):
     GENESIS_HASH = ('bb0a78264637406b6360aad926284d54'
                     '4d7049f45189db5664f3c4d07350559e')
 
+# Source: https://github.com/dashpay/dash
+class Dash(Coin):
+    NAME = "Dash"
+    SHORTNAME = "DASH"
+    NET = "mainnet"
+    XPUB_VERBYTES = bytes.fromhex("02fe52cc")
+    XPRV_VERBYTES = bytes.fromhex("02fe52f8")
+    GENESIS_HASH = ('00000ffd590b1485b3caadc19b22e637'
+                    '9c733355108f107a430458cdf3407ab6')
+    P2PKH_VERBYTE = bytes.fromhex("4c")
+    P2SH_VERBYTES = [bytes.fromhex("10")]
+    WIF_BYTE = bytes.fromhex("cc")
+    TX_COUNT_HEIGHT = 569399
+    TX_COUNT = 2157510
+    TX_PER_BLOCK = 4
+    RPC_PORT = 9998
+    PEERS = [
+        'electrum.dash.org s t',
+        'electrum.masternode.io s t',
+        'electrum-drk.club s t',
+        'dashcrypto.space s t',
+        'electrum.dash.siampm.com s t',
+        'wl4sfwq2hwxnodof.onion s t',
+    ]
+    SESSIONCLS = DashElectrumX
+    DAEMON = daemon.DashDaemon
+
+    @classmethod
+    def header_hash(cls, header):
+        '''Given a header return the hash.'''
+        import x11_hash
+        return x11_hash.getPoWHash(header)
+
 
 # Source: https://github.com/axerunners/axe
 class Axe(Coin):
